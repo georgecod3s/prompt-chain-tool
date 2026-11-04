@@ -1,0 +1,54 @@
+export type Provider = { id: number; name: string; base_url: string | null; api_key_env: string | null; is_active: boolean };
+export type Model = {
+    id: number;
+    provider_id: number;
+    name: string;
+    model_id: string;
+    temperature: number | null;
+    max_output_tokens: number | null;
+    priority: number;
+    is_active: boolean;
+    llm_providers?: Provider | null;
+};
+export type Chain = { id: number; name: string; description: string | null; is_active: boolean; created_at: string; updated_at: string };
+export type Step = {
+    id: number;
+    chain_id: number;
+    step_order: number;
+    name: string;
+    input_type: "image" | "text";
+    output_type: "text" | "json_list";
+    model_id: number | null;
+    prompt: string;
+    temperature: number | null;
+    created_at: string;
+    updated_at: string;
+};
+export type GenRequest = {
+    id: number;
+    chain_id: number | null;
+    chain_name: string | null;
+    requested_by: string | null;
+    image_id: string | null;
+    source: string;
+    status: "running" | "completed" | "failed";
+    caption_count: number;
+    error: string | null;
+    created_at: string;
+    completed_at: string | null;
+};
+export type LlmResponse = {
+    id: number;
+    request_id: number | null;
+    step_id: number | null;
+    step_order: number | null;
+    model_name: string | null;
+    prompt: string | null;
+    response: string | null;
+    status: "ok" | "error";
+    error: string | null;
+    latency_ms: number | null;
+    input_tokens: number | null;
+    output_tokens: number | null;
+    created_at: string;
+};

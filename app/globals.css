@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* class-based dark mode: <html class="dark"> is set by the theme script */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f6f6f4;
+  --surface: #ffffff;
+  --surface-2: #f1f1ee;
+  --line: #e2e2dc;
+  --fg: #18181b;
+  --muted: #6b6b72;
+  --accent: #7c3aed;
+  --accent-fg: #ffffff;
+  --accent-soft: rgba(124, 58, 237, 0.1);
+  --danger: #dc2626;
+  --danger-soft: rgba(220, 38, 38, 0.08);
+  --ok: #059669;
+  --ok-soft: rgba(5, 150, 105, 0.1);
+  --code: #f4f3ff;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0b0b0f;
+  --surface: #16161c;
+  --surface-2: #1e1e26;
+  --line: #2b2b35;
+  --fg: #f4f4f5;
+  --muted: #9a9aa6;
+  --accent: #a78bfa;
+  --accent-fg: #0b0b0f;
+  --accent-soft: rgba(167, 139, 250, 0.14);
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, 0.12);
+  --ok: #34d399;
+  --ok-soft: rgba(52, 211, 153, 0.12);
+  --code: #101016;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-code: var(--code);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 1rem;
+}
+
+.input {
+  width: 100%;
+  border-radius: 0.6rem;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--fg);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+}
+.input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+textarea.input { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8rem; line-height: 1.5; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 0.6rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 0.15s, opacity 0.15s;
+}
+.btn-primary { background: var(--accent); color: var(--accent-fg); }
+.btn-primary:hover { opacity: 0.9; }
+.btn-ghost { background: var(--surface-2); border: 1px solid var(--line); }
+.btn-ghost:hover { border-color: var(--muted); }
+.btn-danger { background: var(--danger-soft); color: var(--danger); }
+.btn-danger:hover { opacity: 0.8; }
+.btn-icon { padding: 0.35rem 0.55rem; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
